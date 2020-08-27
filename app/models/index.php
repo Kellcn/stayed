@@ -16,11 +16,6 @@ class IndexModel extends ModelBasic
     }
     
     public function getUserInfo($uid = 0){
-        //$this->_pdoBegin();
-        $res1 = $this->_table('llp_user_ext_'.$this->_getUserNum($uid))->_where(['uid' => $uid])->_selectOne();
-        $res2 = $this->_table('llp_user_'.$this->_getUserNum($uid))->_where(['uid' => $uid])->_selectOne();
-        //$this->_pdoCommit();
-        return array_merge($res1, $res2);
-        return $res1;
+        return $this->_table('llp_user_'.$this->_getUserNum($uid))->_where(['uid' => $uid])->_selectOne();
     }
 }
